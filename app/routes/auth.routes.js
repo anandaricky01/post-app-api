@@ -3,9 +3,9 @@ module.exports = (app) => {
   const router = require("express").Router();
   const {
     emailRegistration,
-    passwordValidation,
-    checkRules,
-  } = require("../middlewares/user-validation.js");
+    passwordValidation
+  } = require("../middlewares/user-validation");
+  const {checkRules} = require("../middlewares/checkRules");
 
   router.post(
     "/register",
