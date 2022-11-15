@@ -2,7 +2,8 @@ module.exports = (mongoose) => {
     const Schema = mongoose.Schema({
         title : {
             type : String,
-            required : true
+            required : true,
+            unique : true
         },
         slug : {
             type : String,
@@ -20,6 +21,9 @@ module.exports = (mongoose) => {
             type : Date,
             default : Date.now
         }
+    },
+    {
+      timestamps: true,
     });
 
     const Post = mongoose.model("posts", Schema);
