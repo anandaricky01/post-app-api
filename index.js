@@ -28,6 +28,7 @@ app.get("/", (req, res) => {
 });
 
 require('./app/controllers/auth.controller')(app);
+require('./app/controllers/post.controller')(app);
 
 app.listen(PORT, () => {
   console.log(`Mongo Post App | Listening at http://localhost:${PORT}`);
