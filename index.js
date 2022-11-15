@@ -8,18 +8,19 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+
 db.mongoose
-  .connect(db.url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Database Connected!");
-  })
-  .catch((err) => {
-    console.log("Can't Connect to the Database!", err);
-    process.exit();
-  });
+.connect(db.url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log("Database Connected!");
+})
+.catch((err) => {
+  console.log("Can't Connect to the Database!", err);
+  process.exit();
+});
 
 app.get("/", (req, res) => {
   return res.json({
@@ -27,8 +28,8 @@ app.get("/", (req, res) => {
   });
 });
 
-require('./app/controllers/auth.controller')(app);
-require('./app/controllers/post.controller')(app);
+require('./app/routes/auth.routes')(app);
+require('./app/routes/post.routes')(app);
 
 app.listen(PORT, () => {
   console.log(`Mongo Post App | Listening at http://localhost:${PORT}`);
